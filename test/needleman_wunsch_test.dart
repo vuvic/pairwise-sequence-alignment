@@ -31,16 +31,33 @@ void main() {
     }
   });
 
-  test('calculateCell returns correct cell value and paths', () {
+  test('calculateCell returns correct cell value and paths for a single cell',
+      () {
     String sequence1 = "GATTACA";
     String sequence2 = "GCATGCU";
     PairwiseSequenceAligner aligner =
         PairwiseSequenceAligner(sequence1, sequence2);
 
-    MatrixCell cell = aligner.calculateCell(1, 1);
-    expect(cell.value, isNonNegative);
-    expect(cell.paths, isNotEmpty);
+    List<List<MatrixCell>> matrix = aligner.matrix;
+    StringBuffer matrixLog = StringBuffer();
+
+    int i = 1;
+    int j = 1;
+
+    matrix[i][j] = aligner.calculateCell(i, j);
+    expect(matrix[i][j].value, 1);
+    expect(matrix[i][j].paths?[0].i, 0);
+    expect(matrix[i][j].paths?[0].j, 0);
+
+    for (var row in matrix) {
+      for (var cell in row) {
+        matrixLog.write('${cell.value} ');
+      }
+      matrixLog.writeln();
+    }
+    print(matrixLog.toString());
   });
+
   test('alignSequences returns correct alignment for simple sequences', () {
     String sequence1 = "GATTACA";
     String sequence2 = "GCATGCU";
