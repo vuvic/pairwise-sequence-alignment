@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pairwise_sequence_alignment/needleman_wunsch.dart';
+import 'package:pairwise_sequence_alignment/pairwise_sequence_aligner.dart';
 import 'package:pairwise_sequence_alignment/models/matrix_cell.dart';
 import 'package:pairwise_sequence_alignment/models/scoring_scheme.dart';
 import 'package:pairwise_sequence_alignment/models/alignment.dart';
