@@ -14,19 +14,19 @@ class PairwiseSequenceAligner {
   static List<List<MatrixCell>> generateScoringMatrix(
       String sequence1, String sequence2) {
     List<List<MatrixCell>> matrix = List.generate(
-      sequence1.length,
+      sequence1.length + 1,
       (i) => List.generate(
-        sequence2.length,
+        sequence2.length + 1,
         (j) => MatrixCell(value: 0, paths: []),
       ),
     );
 
     // Fill in the first row and column of the matrix
-    for (int i = 0; i < sequence1.length; i++) {
+    for (int i = 0; i < sequence1.length + 1; i++) {
       matrix[i][0].value = i * ScoringScheme.gap;
     }
 
-    for (int j = 0; j < sequence2.length; j++) {
+    for (int j = 0; j < sequence2.length + 1; j++) {
       matrix[0][j].value = j * ScoringScheme.gap;
     }
 
