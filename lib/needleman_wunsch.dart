@@ -35,12 +35,16 @@ class PairwiseSequenceAligner {
 
   SequenceAlignment alignSequences() {
     // Fill in the rest of the matrix
-    for (int i = 1; i < sequence1.length; i++) {
-      for (int j = 1; j < sequence2.length; j++) {
+    for (int i = 1; i < sequence1.length + 1; i++) {
+      for (int j = 1; j < sequence2.length + 1; j++) {
         matrix[i][j] = calculateCell(i, j);
       }
     }
-    return SequenceAlignment("", "", 0);
+
+    int finalScore = matrix[sequence1.length + 1][sequence2.length + 1].value;
+    String alignedSequence1 = "";
+    String alignedSequence2 = "";
+    return SequenceAlignment(alignedSequence1, alignedSequence2, finalScore);
   }
 
   MatrixCell calculateCell(int i, int j) {
@@ -73,5 +77,17 @@ class PairwiseSequenceAligner {
     }
 
     return MatrixCell(value: maxScore, paths: paths);
+  }
+
+  String generateAlignedSequence() {
+    //TODO: Convert return type to a list of alignments
+    String alignedSequence = "";
+    Index currentIndex = Index(i: sequence1.length, j: sequence2.length);
+    while (currentIndex.i > 0 || currentIndex.j > 0) {
+      MatrixCell currentCell = matrix[currentIndex.i][currentIndex.j];
+      //TODO: Generate an alignment for each path in the current cell
+    }
+
+    return alignedSequence;
   }
 }
