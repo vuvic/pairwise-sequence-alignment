@@ -59,7 +59,7 @@ void main() {
   });
 
   test(
-      'running calculateCell in a nested loop generates the correct alignment matrix',
+      'running calculateCell in a nested loop generates the correct alignment matrix for matching sequences',
       () {
     String sequence1 = "GATTACA";
     String sequence2 = "GCATGCU";
@@ -76,6 +76,34 @@ void main() {
     }
 
     expect(matrix[sequence1.length][sequence2.length].value, -1);
+
+    for (var row in matrix) {
+      for (var cell in row) {
+        matrixLog.write('${cell.value} ');
+      }
+      matrixLog.writeln();
+    }
+    print(matrixLog.toString());
+  });
+
+  test(
+      'running calculateCell in a nested loop generates the correct alignment matrix for non-matching sequences',
+      () {
+    String sequence1 = "GATTACA";
+    String sequence2 = "GATC";
+    PairwiseSequenceAligner aligner =
+        PairwiseSequenceAligner(sequence1, sequence2);
+
+    List<List<MatrixCell>> matrix = aligner.matrix;
+    StringBuffer matrixLog = StringBuffer();
+
+    for (int i = 1; i < sequence1.length + 1; i++) {
+      for (int j = 1; j < sequence2.length + 1; j++) {
+        matrix[i][j] = aligner.calculateCell(i, j);
+      }
+    }
+
+    expect(matrix[sequence1.length][sequence2.length].value, -2);
 
     for (var row in matrix) {
       for (var cell in row) {
