@@ -48,8 +48,6 @@ class PairwiseSequenceAligner {
   }
 
   MatrixCell calculateCell(int i, int j) {
-    // TODO: Implement this method
-
     MatrixCell northwestCell = matrix[i - 1][j - 1];
     MatrixCell northCell = matrix[i - 1][j];
     MatrixCell westCell = matrix[i][j - 1];
