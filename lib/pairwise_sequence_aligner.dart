@@ -77,15 +77,16 @@ class PairwiseSequenceAligner {
     return MatrixCell(value: maxScore, paths: paths);
   }
 
-  String generateAlignedSequence() {
+  List<SequenceAlignment> traceback() {
     //TODO: Convert return type to a list of alignments
-    String alignedSequence = "";
+    List<SequenceAlignment> alignedSequences;
+
     Index currentIndex = Index(i: sequence1.length, j: sequence2.length);
     while (currentIndex.i > 0 || currentIndex.j > 0) {
       MatrixCell currentCell = matrix[currentIndex.i][currentIndex.j];
       //TODO: Generate an alignment for each path in the current cell
     }
 
-    return alignedSequence;
+    return alignedSequences;
   }
 }
