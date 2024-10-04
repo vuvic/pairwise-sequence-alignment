@@ -1,7 +1,7 @@
 class SequenceAlignment {
-  final String alignedSequence1;
-  final String alignedSequence2;
-  final int score;
+  String alignedSequence1;
+  String alignedSequence2;
+  int score;
 
   SequenceAlignment(this.alignedSequence1, this.alignedSequence2, this.score);
 
