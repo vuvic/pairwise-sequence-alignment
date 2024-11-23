@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pairwise_sequence_alignment/pairwise_sequence_aligner.dart';
-import 'package:pairwise_sequence_alignment/models/matrix_cell.dart';
-import 'package:pairwise_sequence_alignment/models/scoring_scheme.dart';
-import 'package:pairwise_sequence_alignment/models/alignment.dart';
+import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/pairwise_sequence_aligner.dart';
+import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/models/matrix_cell.dart';
+import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/models/scoring_scheme.dart';
+import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/models/alignment.dart';
 
 void main() {
   test('generateScoringMatrix initializes the matrix correctly', () {
@@ -167,7 +167,33 @@ void main() {
   });
 
   test(
-    'alignSequences returns correct alignment for matching sequences',
+    'alignSequences returns optimal alignment for matching sequences when there is one optimal alignment',
+    () {
+      String sequence1 = "ATGGTGCACGTGACTCCTGA";
+      String sequence2 = "ATGGTCCACTGACTCCTGT";
+      PairwiseSequenceAligner aligner =
+          PairwiseSequenceAligner(sequence1, sequence2);
+
+      List<SequenceAlignment> alignments = aligner.alignSequences();
+
+      List<List<MatrixCell>> matrix = aligner.matrix;
+      StringBuffer matrixLog = StringBuffer();
+      for (var row in matrix) {
+        for (var cell in row) {
+          matrixLog.write('${cell.value} ');
+        }
+        matrixLog.writeln();
+      }
+
+      expect(alignments.length, 1);
+      expect(alignments[0].score, 13);
+      expect(alignments[0].alignedSequence1, 'ATGGTGCACGTGACTCCTGA');
+      expect(alignments[0].alignedSequence2, 'ATGGTCCAC-TGACTCCTGT');
+    },
+  );
+
+  test(
+    'alignSequences returns optimal alignments for matching sequences when there are multiple optimal alignments',
     () {
       String sequence1 = "GATTACA";
       String sequence2 = "GATC";

@@ -1,5 +1,5 @@
 import 'dart:math';
-import './models/alignment.dart';
+import 'models/alignment.dart';
 import 'models/matrix_cell.dart';
 import 'models/scoring_scheme.dart';
 
