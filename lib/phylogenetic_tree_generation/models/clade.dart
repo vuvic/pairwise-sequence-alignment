@@ -9,8 +9,12 @@ class Clade {
   String toNewickString() {
     if (children.isEmpty) {
       return '$name:${branchLength.toString()}';
-    } else {
+    }
+
+    if (branchLength == null) {
       return '(${children.map((child) => child.toNewickString()).join(',')});';
+    } else {
+      return '(${children.map((child) => child.toNewickString()).join(',')}):${branchLength.toString()}';
     }
   }
 }
