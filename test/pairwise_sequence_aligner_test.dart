@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/pairwise_sequence_aligner.dart';
-import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/models/matrix_cell.dart';
-import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/models/scoring_scheme.dart';
-import 'package:pairwise_sequence_alignment/multiple_sequence_alignment/pairwise_alignment/models/alignment.dart';
+import 'package:pairwise_sequence_alignment/phylogenetic_tree_generation/pairwise_alignment/pairwise_sequence_aligner.dart';
+import 'package:pairwise_sequence_alignment/phylogenetic_tree_generation/pairwise_alignment/models/matrix_cell.dart';
+import 'package:pairwise_sequence_alignment/phylogenetic_tree_generation/pairwise_alignment/models/scoring_scheme.dart';
+import 'package:pairwise_sequence_alignment/phylogenetic_tree_generation/pairwise_alignment/models/alignment.dart';
 
 void main() {
   test('generateScoringMatrix initializes the matrix correctly', () {
