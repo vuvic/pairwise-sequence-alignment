@@ -28,6 +28,6 @@ class PhylogeneticTreeGenerator {
   }
 
   Clade generateTree() {
-    return Clade('root', []);
+    return Clade();
   }
 }

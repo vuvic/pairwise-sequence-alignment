@@ -1,17 +1,16 @@
 class Clade {
-  final String name;
-  final List<Clade> children; // subclades or leaves
-  double branchLength = 0;
-  int? bootStrapValue;
+  final String? name; // leaf nodes will be named
+  final List<Clade> children;
+  double? branchLength; // non-root nodes will have branch lengths
 
-  Clade(this.name, this.children);
+  Clade({this.name, List<Clade>? children, this.branchLength})
+      : children = children ?? [];
 
   String toNewickString() {
     if (children.isEmpty) {
       return '$name:${branchLength.toString()}';
+    } else {
+      return '(${children.map((child) => child.toNewickString()).join(',')});';
     }
-    String childrenString =
-        children.map((child) => child.toNewickString()).join(',');
-    return '($childrenString)${bootStrapValue.toString()}';
   }
 }
