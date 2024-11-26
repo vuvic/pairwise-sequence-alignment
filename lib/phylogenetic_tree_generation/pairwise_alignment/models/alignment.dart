@@ -5,8 +5,13 @@ class SequenceAlignment {
 
   SequenceAlignment(this.alignedSequence1, this.alignedSequence2, this.score);
 
-  @override
-  String toString() {
-    return 'Sequence 1: $alignedSequence1\nSequence 2: $alignedSequence2\nScore: $score';
+  int calculateDistance() {
+    int distance = 0;
+    for (int i = 0; i < alignedSequence1.length; i++) {
+      if (alignedSequence1[i] != alignedSequence2[i]) {
+        distance++;
+      }
+    }
+    return distance;
   }
 }
