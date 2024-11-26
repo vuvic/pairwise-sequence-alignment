@@ -20,6 +20,7 @@ class FastaParser {
       }
     }
 
+    // get last sequence
     if (currentName.isNotEmpty) {
       fastaEntries.add(FastaEntry(currentName, currentSequence.toString()));
     }
