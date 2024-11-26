@@ -69,7 +69,6 @@ void main() {
           PairwiseSequenceAligner(sequence1, sequence2);
 
       List<List<MatrixCell>> matrix = aligner.matrix;
-      StringBuffer matrixLog = StringBuffer();
 
       for (int i = 1; i < sequence1.length + 1; i++) {
         for (int j = 1; j < sequence2.length + 1; j++) {
@@ -78,14 +77,6 @@ void main() {
       }
 
       expect(matrix[sequence1.length][sequence2.length].value, -1);
-
-      for (var row in matrix) {
-        for (var cell in row) {
-          matrixLog.write('${cell.value} ');
-        }
-        matrixLog.writeln();
-      }
-      print(matrixLog.toString());
     },
   );
 
@@ -127,7 +118,6 @@ void main() {
         PairwiseSequenceAligner(sequence1, sequence2);
 
     List<List<MatrixCell>> matrix = aligner.matrix;
-    StringBuffer matrixLog = StringBuffer();
 
     for (int i = 1; i < sequence1.length + 1; i++) {
       for (int j = 1; j < sequence2.length + 1; j++) {
@@ -151,7 +141,6 @@ void main() {
         PairwiseSequenceAligner(sequence1, sequence2);
 
     List<List<MatrixCell>> matrix = aligner.matrix;
-    StringBuffer matrixLog = StringBuffer();
 
     for (int i = 1; i < sequence1.length + 1; i++) {
       for (int j = 1; j < sequence2.length + 1; j++) {
@@ -175,15 +164,6 @@ void main() {
           PairwiseSequenceAligner(sequence1, sequence2);
 
       List<SequenceAlignment> alignments = aligner.alignSequences();
-
-      List<List<MatrixCell>> matrix = aligner.matrix;
-      StringBuffer matrixLog = StringBuffer();
-      for (var row in matrix) {
-        for (var cell in row) {
-          matrixLog.write('${cell.value} ');
-        }
-        matrixLog.writeln();
-      }
 
       expect(alignments.length, 1);
       expect(alignments[0].score, 13);
