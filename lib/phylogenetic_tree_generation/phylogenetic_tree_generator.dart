@@ -73,9 +73,10 @@ class PhylogeneticTreeGenerator {
           sequences[j],
         );
         List<SequenceAlignment> alignments = aligner.alignSequences();
-        distanceMatrix[i][j] = alignments[0].calculateDistance()
-            as double; // to accomodate for fractional distances due to division
-        distanceMatrix[j][i] = alignments[0].calculateDistance() as double;
+        distanceMatrix[i][j] = alignments[0]
+            .calculateDistance()
+            .toDouble(); // to accomodate for fractional distances due to division
+        distanceMatrix[j][i] = alignments[0].calculateDistance().toDouble();
       }
     }
 
@@ -85,7 +86,7 @@ class PhylogeneticTreeGenerator {
   DistanceMatrixEntry findClosestClades(List<List<double>> distanceMatrix) {
     double minDistance = distanceMatrix[0][1];
     int minI = 0;
-    int minJ = 0;
+    int minJ = 1;
 
     for (int i = 0; i < distanceMatrix.length; i++) {
       for (int j = i + 1; j < distanceMatrix.length; j++) {
