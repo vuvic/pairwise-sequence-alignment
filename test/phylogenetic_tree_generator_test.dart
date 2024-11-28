@@ -76,6 +76,9 @@ void main() {
       Clade tree = generator.generateTree(fastaEntries);
 
       expect(tree.children.length, 2);
+      expect((tree.children[0].children[0].name == 'seq1'), true);
+      expect((tree.children[0].children[1].name == 'seq2'), true);
+      expect((tree.children[1].name == 'seq3'), true);
     });
   });
 }

@@ -113,7 +113,7 @@ class PhylogeneticTreeGenerator {
 
     double branchLength = halfDistance;
     while (child.children.isNotEmpty) {
-      branchLength -= child.branchLength!;
+      branchLength -= child.children[0].branchLength!;
       child = child.children[0];
     }
 
